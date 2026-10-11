@@ -1,6 +1,6 @@
 segment,ships,pct_under_way,pct_idle,pct_at_berth,pct_at_anchor,waiting_near_hubs,avg_speed_under_way_kn,share_pct
-Cargo & tanker,2564,24.5,17.7,50.6,7.3,72,8.1,37.8
-Other & unknown,2076,16.3,28.6,42.8,12.3,103,7.1,30.6
-Passenger,977,20.4,43.8,24.4,11.5,50,4.9,14.4
-Pleasure & fishing,752,8.8,42.0,36.4,12.8,25,3.7,11.1
-Tug,413,9.4,39.2,39.0,12.3,24,4.9,6.1
+Cargo & tanker,2587,23.0,17.7,52.1,7.1,74,8.3,38.0
+Other & unknown,2082,15.1,28.0,44.9,12.0,105,7.7,30.6
+Passenger,976,18.0,45.5,24.8,11.7,51,5.8,14.3
+Pleasure & fishing,749,9.3,40.9,37.9,11.9,23,4.0,11.0
+Tug,420,9.5,39.0,39.5,11.9,23,5.4,6.2

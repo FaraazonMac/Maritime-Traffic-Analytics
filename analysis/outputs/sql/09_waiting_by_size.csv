@@ -1,5 +1,6 @@
 size_class,ships_waiting,share_pct
-small (<100 m),210,76.6
-medium (100-200 m),44,16.1
+small (<100 m),210,76.1
+medium (100-200 m),45,16.3
 unknown size,16,5.8
-large (200-300 m),4,1.5
+large (200-300 m),4,1.4
+very large (>300 m),1,0.4

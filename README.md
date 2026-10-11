@@ -125,7 +125,7 @@ Ask for a specific ship or facility, by name, IMO number, flag, vessel type, des
 
 ## Analytics layer
 
-A reproducible analysis pipeline sits on top of the live feed (`analysis/`). One command, `python analysis/run_all.py`, pulls the current fleet, cleans it, runs SQL and pandas analysis, and builds an Excel workbook, an interactive dashboard and a written findings memo. Setup and details are in [`analysis/README.md`](analysis/README.md).
+A reproducible analysis pipeline sits on top of the live feed (`analysis/`). One command, `python analysis/run_all.py`, pulls the current fleet, cleans it, runs SQL and pandas analysis, and builds an Excel workbook, an interactive dashboard and a written findings memo. A full run over about 9,400 ships takes a few seconds on a normal laptop. Setup and details are in [`analysis/README.md`](analysis/README.md).
 
 **What it found** (North Sea & English Channel, snapshot of 11 Oct 2026, about 6,900 current ships):
 
@@ -138,6 +138,26 @@ A reproducible analysis pipeline sits on top of the live feed (`analysis/`). One
 **Method highlights.** Every cleaning rule is counted and reported. The same headline numbers are computed in pandas and in SQL and cross-checked. A history collector stores per-hub summaries every 30 minutes, and time views (daily levels, weekday and weekly patterns) switch on as data accumulates.
 
 **Limits.** One region only; AIS coverage comes from land-based receivers, so open-sea traffic is under-represented; fuel, CO2 and cost are estimates with explicit assumptions and sources; AIS has no operator or cargo data, so no company-level loss can be computed.
+
+
+<details>
+<summary><b>Dashboard screenshots</b> (click to expand)</summary>
+
+![Overview: KPIs and ship map](docs/dashboard-01-overview-top.png)
+![Overview: status and hub levels](docs/dashboard-02-overview-bottom.png)
+![Congestion: hub bubble map](docs/dashboard-03-congestion-top.png)
+![Congestion: hub status, zones and speed](docs/dashboard-04-congestion-bottom.png)
+![Fleet: types, flags and sizes](docs/dashboard-05-fleet-top.png)
+![Fleet: silent ships and segments](docs/dashboard-06-fleet-bottom.png)
+![Voyages: routes and destination quality](docs/dashboard-07-voyages.png)
+![Cost and fuel estimates](docs/dashboard-08-cost-fuel.png)
+![Data quality and cleaning log](docs/dashboard-09-data-quality.png)
+![Time analysis: fills in as the collector gathers days](docs/dashboard-10-time-analysis.png)
+
+</details>
+
+
+
 
 ## Scope: Why Not Every Ship Worldwide?
 
