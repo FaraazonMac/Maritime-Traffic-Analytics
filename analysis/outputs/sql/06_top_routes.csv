@@ -1,0 +1,16 @@
+departure_port,destination,ships,avg_speed_kn
+ANTWERPEN,Antwerp,23,2.2
+EUROPOORT,Rotterdam,20,2.1
+VLAARDINGEN,Rotterdam,18,1.1
+MAASSLUIS,Rotterdam,17,1.9
+AMSTERDAM,Amsterdam,11,2.1
+HOEK VAN HOLLAND,Rotterdam,11,3.4
+SCHIEDAM,Rotterdam,11,3.5
+ZAANDAM,Amsterdam,10,1.2
+ROTTERDAM,Rotterdam,9,3.4
+ANTWERPEN,Amsterdam,8,6.4
+ZAANDAM,Rotterdam,8,5.9
+BREMERHAVEN,Bremerhaven,6,0.0
+VLISSINGEN,Vlissingen,5,0.8
+ZAANDAM,Antwerp,5,6.4
+ANTWERPEN,Rotterdam,4,6.5

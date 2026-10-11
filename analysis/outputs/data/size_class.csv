@@ -1,0 +1,6 @@
+size_class,ships
+small (<100 m),4780
+medium (100-200 m),1574
+unknown size,331
+large (200-300 m),148
+very large (>300 m),44

@@ -101,12 +101,26 @@ A live 3D ship-tracking globe (React + react-globe.gl) backed by a Python FastAP
 - Added output formatting rules so replies use plain lines instead of Markdown tables the chat box can't render
 - Made the model check both ships and facilities before reporting a name as not found
 - Persisted the departure log to `backend/departures.json` (git-ignored). It is written when a departure is detected and reloaded on startup, so departures survive restarts
-- Rotated the Groq API key after it was exposed during debugging
+- Rotated the Groq API key after it was exposed during debugging.
+
+### Session 15 — Ship expiry
+- Added a background task that drops ships from the live list when they stop reporting. Ships last seen near the edge of the tracked area (within 0.5°) are dropped after 60 minutes, since they most likely sailed out of coverage. Ships that go silent well inside the area are kept for 24 hours so they stay flagged as dark-fleet candidates
+- Effect: the tracked count no longer grows without limit, so fleet counts and chat answers reflect ships that are actually still reporting
+
+### Session 16 — Analytics layer
+- Built an analysis pipeline in `analysis/`: one command cleans the live fleet, runs 9 SQL queries (cross-checked against pandas), draws 13 charts, builds an Excel workbook (live pivot, editable assumptions, formula-driven estimates), an interactive dashboard and a findings memo
+- Found on real data that navigation status cannot be trusted alone (about two thirds of ships marked "under way" were stationary), so ships are classified by speed too; added a by-segment view because the feed mixes tugs, ferries, pleasure craft, barges and cargo ships
+- Caught that the silent-ship rate was biased by how long the backend retains ships (an apparent edge effect vanished when comparing ships of the same age) and that routes were double-counted under two spellings; both fixed
+- Captured ship length and beam from AIS static data (about 95% of ships now report a length) so fuel and cost estimates use size classes
+- Added a history collector (per-hub summaries every 30 minutes) and a time analysis gated by how many usable days exist
+- Moved the analysis Python environment outside the Desktop folder after file reads from it stalled
 
 
 
 
 ## Current state
+- ✅ Analytics pipeline (cleaning, SQL, dashboard, Excel workbook, findings memo) running on live data
+- ⬜ Daily and weekly congestion patterns fill in as the history collector gathers more days
 - ✅ Live globe with real ships, ports, lighthouses, shipyards, recycling yards, bunkering stations, dry/wet docks (toggleable layers)
 - ✅ Dark-fleet / sanctions-evasion detector
 - ✅ Live port congestion score

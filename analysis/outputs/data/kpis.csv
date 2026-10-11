@@ -1,0 +1,28 @@
+kpi,value
+snapshot_utc,2026-10-11 08:17
+total_ships,6877
+pct_moving,16.8
+pct_idle,29.3
+pct_at_anchor,10.1
+pct_at_berth,43.9
+ships_near_hubs,3233
+waiting_near_hubs,275
+dark_flagged,619
+pct_dark,7.95
+ships_in_dark_window,7786
+total_ships_incl_silent,8881
+pct_type_unknown,3.2
+pct_with_imo,26.5
+pct_valid_imo,25.5
+pct_with_length,95.2
+pct_dest_usable,79.0
+pct_dest_app_matched,28.0
+pct_dest_resolved,35.7
+ships_with_departure,716
+median_speed_moving_kn,7.4
+mean_speed_moving_kn,7.5
+busiest_hub,Rotterdam
+most_waiting_hub,Rotterdam
+highest_anchor_share_hub,Le Havre
+stationary_but_moving,2012
+moving_but_anchored,102

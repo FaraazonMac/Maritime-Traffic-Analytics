@@ -1,0 +1,11 @@
+field,pct_complete,ships
+Ship name,99.4,6833
+Flag state,99.9,6869
+Vessel type,96.8,6656
+IMO number,26.5,1823
+IMO passes checksum,25.5,1757
+Call sign,96.1,6611
+Length,95.2,6546
+Speed,99.8,6862
+Destination usable (not blank/placeholder),79.0,5434
+Destination resolved to a port,35.7,2454

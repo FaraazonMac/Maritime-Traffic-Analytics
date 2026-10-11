@@ -22,6 +22,25 @@ Most public ship trackers show you *where* ships are. This project treats the li
 
 ---
 
+## 🎯 Problem, solution and approach
+
+**The problem.** Raw ship-tracking (AIS) data looks authoritative but misleads. It is a firehose of position messages with free-text destinations typed by hand, navigation status that crews forget to update (about 30% of ships marked "under way" are actually stationary), missing identifiers (only about 25% of ships carry a valid IMO number), and a mix of cargo ships, tugs, ferries, pleasure craft and inland barges. Raw counts therefore overstate movement, blur seagoing and local traffic, and make ships that simply went quiet look suspicious. Operators and analysts need trustworthy answers to simple questions: where are ships waiting, what does that waiting cost, and which signals are real?
+
+**The solution.** A live maritime intelligence tool for the North Sea and English Channel with two layers:
+- **An application:** a 3D globe with ports and maritime infrastructure worldwide, per-ship voyage and weather context, silent-ship ("dark fleet") alerts, port congestion, and an AI assistant that answers questions from the live fleet data.
+- **An analytics pipeline:** it cleans the feed, measures congestion per port hub, separates fleet segments, and estimates the fuel and cost of ships waiting at anchor, delivered as an Excel workbook, an interactive dashboard and a findings memo.
+
+**How it works.**
+1. **Ingest.** Live AIS from AISStream flows into a FastAPI backend, alongside the World Port Index and curated facility lists for context.
+2. **Clean.** Every rule is explicit and counted: impossible speeds, IMO checksums, free-text destinations normalised, and ships classified by speed as well as status.
+3. **Model.** Ships are assigned to 19 port hubs; "waiting" means anchored at sea inside a hub's radius; congestion levels are relative (green, yellow, red).
+4. **Verify.** Headline numbers are computed twice, in pandas and in SQL, and cross-checked. Silent-ship rates are compared on equal-age windows, which removed a bias found during the analysis.
+5. **Answer.** The AI assistant uses function calling over live data, so replies come from the data and not from the model's memory.
+6. **Track over time.** A history collector stores per-hub summaries every 30 minutes, and time views (daily levels, weekday patterns) appear as data accumulates.
+
+
+
+
 ## Key Features
 
 | Feature | What it does |
@@ -141,4 +160,28 @@ Open `http://localhost:5173`.
 
 - [ ] Self-check/monitoring for overall system health (backend, AIS feed, data freshness)
 - [ ] Evaluate widening live tracking beyond the North Sea/English Channel
-- [ ] `requirements.txt` for one-command backend setup
+- [x] `requirements.txt` for one-command backend setup
+
+## 📊 Analytics layer
+
+A reproducible analysis pipeline sits on top of the live feed (`analysis/`). One command, `python analysis/run_all.py`, pulls the current fleet, cleans it, runs SQL and pandas analysis, and builds an Excel workbook, an interactive dashboard and a written findings memo. Setup and details are in [`analysis/README.md`](analysis/README.md).
+
+**What it found** (North Sea & English Channel, snapshot of 11 Oct 2026, about 6,900 current ships):
+
+- **Data quality.** Only about 25% of ships carry a valid IMO number. Destinations are free text typed by hand, and cleaning raised the share resolved to a port from about 28% to about 35%. About 30% of ships whose status says "under way" are actually stationary, so ships are classified by speed as well as status.
+- **What the feed contains.** Only about 16% of current ships are under way and about 44% are moored, and about 69% are under 100 m. It is a harbour-dominated feed (tugs, ferries, pleasure craft, inland barges and cargo ships), not open-sea shipping.
+- **Congestion.** Rotterdam and Amsterdam have the most ships waiting at anchor (about 70 each), followed by Antwerp (about 30). This is one snapshot; trends need the history collector.
+- **Silent ships.** About 8% of ships heard in the last hour had been silent for 20+ minutes. About 86% of them were stationary when last heard, and the rate was similar at the edge of the tracked area and in the interior (about 7-8% in both). A first calculation suggested a large edge effect, but it was an artefact of how long silent ships are retained, and it disappeared when ships of the same age were compared.
+- **Cost of waiting (estimate).** Ships at anchor near hubs burn roughly 140-780 t of fuel and cost about $1.5-4 million per day, built from published fuel and operating-cost ranges. This is an upper bound for congestion-attributable cost, not a measured loss.
+
+**Method highlights.** Every cleaning rule is counted and reported. The same headline numbers are computed in pandas and in SQL and cross-checked. A history collector stores per-hub summaries every 30 minutes, and time views (daily levels, weekday and weekly patterns) switch on as data accumulates.
+
+**Limits.** One region only; AIS coverage comes from land-based receivers, so open-sea traffic is under-represented; fuel, CO2 and cost are estimates with explicit assumptions and sources; AIS has no operator or cargo data, so no company-level loss can be computed.
+
+
+
+## 📧 Contact & Info
+
+* **Analyst:** Mohammed Faraaz Shaik — [faraazshaik05042005@gmail.com](mailto:faraazshaik05042005@gmail.com)
+* **LinkedIn:** [www.linkedin.com/in/mohammed-faraaz-shaik](https://www.linkedin.com/in/mohammed-faraaz-shaik)
+* **GitHub:** [FaraazonMac](https://github.com/FaraazonMac)

@@ -1,0 +1,20 @@
+name,lat,lng,radius_km,zone,region,locode,aliases,label_pos
+Rotterdam,51.95,4.1,30,Benelux coast,North Sea & English Channel,NLRTM,ROTTERDAM|EUROPOORT|MAASVLAKTE,middle left
+Antwerp,51.27,4.33,25,Benelux coast,North Sea & English Channel,BEANR,ANTWERP|ANTWERPEN|ANVERS,bottom right
+Amsterdam,52.4,4.82,15,Benelux coast,North Sea & English Channel,NLAMS,AMSTERDAM,middle right
+IJmuiden,52.46,4.58,20,Benelux coast,North Sea & English Channel,NLIJM,IJMUIDEN,middle left
+Zeebrugge,51.34,3.2,20,Benelux coast,North Sea & English Channel,BEZEE,ZEEBRUGGE,middle left
+Vlissingen,51.44,3.58,15,Benelux coast,North Sea & English Channel,NLVLI,VLISSINGEN|FLUSHING,top left
+Terneuzen,51.33,3.83,12,Benelux coast,North Sea & English Channel,NLTNZ,TERNEUZEN,bottom left
+Dunkirk,51.05,2.35,20,Dover Strait & Channel,North Sea & English Channel,FRDKK,DUNKIRK|DUNKERQUE,bottom right
+Calais,50.97,1.85,12,Dover Strait & Channel,North Sea & English Channel,FRCQF,CALAIS,middle left
+Dover,51.12,1.33,12,Dover Strait & Channel,North Sea & English Channel,GBDVR,DOVER,top left
+Le Havre,49.48,0.11,25,Dover Strait & Channel,North Sea & English Channel,FRLEH,LE HAVRE|LEHAVRE,middle right
+Southampton,50.9,-1.4,20,Dover Strait & Channel,North Sea & English Channel,GBSOU,SOUTHAMPTON,top left
+Felixstowe,51.95,1.3,20,UK east coast & Thames,North Sea & English Channel,GBFXT,FELIXSTOWE|HARWICH,top center
+Thames (London Gateway),51.5,0.5,25,UK east coast & Thames,North Sea & English Channel,GBLON,LONDON|TILBURY|THAMES,middle left
+Immingham (Humber),53.63,-0.19,25,UK east coast & Thames,North Sea & English Channel,GBIMM,IMMINGHAM|HUMBER|GRIMSBY,top center
+Bremerhaven,53.55,8.55,25,German Bight & Ems,North Sea & English Channel,DEBRV,BREMERHAVEN,top right
+Wilhelmshaven,53.52,8.14,20,German Bight & Ems,North Sea & English Channel,DEWVN,WILHELMSHAVEN,top center
+Emden,53.34,7.2,15,German Bight & Ems,North Sea & English Channel,DEEME,EMDEN,bottom right
+Eemshaven,53.45,6.84,15,German Bight & Ems,North Sea & English Channel,NLEEM,EEMSHAVEN,middle left

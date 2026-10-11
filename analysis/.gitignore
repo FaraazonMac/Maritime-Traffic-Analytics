@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+data/history.db
+data/analysis.db
+data/raw/
+.ipynb_checkpoints/
+
+outputs/data/ships_all.csv
+outputs/data/ships_clean.csv
+.DS_Store

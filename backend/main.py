@@ -678,6 +678,10 @@ async def listen_to_ais():
                 # type but no location.
                 if mmsi in live_ships:
                     live_ships[mmsi]["vessel_type"] = map_ship_type(static.get("Type"))
+                    dim = static.get("Dimension") or {}
+                    a, b, c, d = dim.get("A"), dim.get("B"), dim.get("C"), dim.get("D")
+                    live_ships[mmsi]["length_m"] = (a + b) if a is not None and b is not None and (a + b) > 0 else None
+                    live_ships[mmsi]["beam_m"] = (c + d) if c is not None and d is not None and (c + d) > 0 else None
                     imo = static.get("ImoNumber")
                     live_ships[mmsi]["imo"] = imo if imo else None
                     call_sign = (static.get("CallSign") or "").strip()
