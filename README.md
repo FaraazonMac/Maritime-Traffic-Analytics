@@ -1,4 +1,4 @@
-# 🌊 Maritime Globe
+# Maritime Traffic Analytics
 
 **A live 3D globe of real ships, tracked via AIS, with genuine maritime-intelligence features layered on top — not just dots on a map.**
 
