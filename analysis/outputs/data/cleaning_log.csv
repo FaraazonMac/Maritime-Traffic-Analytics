@@ -1,23 +1,23 @@
 rule,rows_affected,action
-Raw rows received,8881,-
+Raw rows received,9376,-
 Missing MMSI (cannot identify the ship),0,dropped
 Duplicate MMSI (same ship twice),0,"dropped, kept the most recent report"
 Missing or impossible position,0,dropped
 Position outside the tracked box,0,dropped
-Speed = 102.3 kn (AIS 'not available' code),17,set to missing
+Speed = 102.3 kn (AIS 'not available' code),16,set to missing
 Negative speed,0,set to missing
-Implausible speed (> 40 kn),14,set to missing
-Vessel type missing,1035,labelled 'unknown' (kept)
-Ship name missing or 'Unknown',423,name set to missing (kept)
-Flag state missing (MMSI country code not recognised),34,labelled 'Unknown' (kept)
+Implausible speed (> 40 kn),19,set to missing
+Vessel type missing,1136,labelled 'unknown' (kept)
+Ship name missing or 'Unknown',512,name set to missing (kept)
+Flag state missing (MMSI country code not recognised),44,labelled 'Unknown' (kept)
 IMO = 0 (placeholder),0,set to missing
-IMO present but fails the checksum,73,"kept, flagged invalid"
-Status says under way but speed is below 0.5 kn,2444,kept; reclassified as 'idle' (stationary)
-Reported anchored/moored but speed above 3 kn,129,"kept, flagged"
-Implausible length (<= 0 or > 500 m),3,set to missing
-Destination missing,2291,classified
-Destination is a placeholder (e.g. 'FOR ORDERS'),112,classified
-Destination is a UN/LOCODE of a known hub (e.g. 'NL RTM'),612,classified and mapped to the hub
-Destination names a known hub,1502,classified and mapped to the hub
-Silent for more than 15 minutes (stale),2004,"kept; excluded from traffic metrics, used only for the dark-fleet analysis"
-Clean rows kept,8881,-
+IMO present but fails the checksum,77,"kept, flagged invalid"
+Status says under way but speed is below 0.5 kn,2471,kept; reclassified as 'idle' (stationary)
+Reported anchored/moored but speed above 3 kn,165,"kept, flagged"
+Implausible length (<= 0 or > 500 m),2,set to missing
+Destination missing,2451,classified
+Destination is a placeholder (e.g. 'FOR ORDERS'),117,classified
+Destination is a UN/LOCODE of a known hub (e.g. 'NL RTM'),628,classified and mapped to the hub
+Destination names a known hub,1540,classified and mapped to the hub
+Silent for more than 15 minutes (stale),2594,"kept; excluded from traffic metrics, used only for the dark-fleet analysis"
+Clean rows kept,9376,-

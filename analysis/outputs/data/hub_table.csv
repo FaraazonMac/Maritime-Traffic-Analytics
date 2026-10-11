@@ -1,20 +1,20 @@
 hub,zone,ships_in_radius,at_anchor,at_berth,idle,moving,other,waiting_broad,avg_speed_moving_kn,pct_at_anchor,waiting_rank,level_waiting,level_waiting_broad,level_traffic,radius_km,lat,lng
-Rotterdam,Benelux coast,1079,71,644,279,85,0,350,7.6,6.6,1,red,red,red,30,51.95,4.1
-Amsterdam,Benelux coast,724,66,258,328,72,0,394,4.7,9.1,2,red,red,red,15,52.4,4.82
-Antwerp,Benelux coast,378,31,199,85,63,0,116,6.6,8.2,3,red,red,red,25,51.27,4.33
-Le Havre,Dover Strait & Channel,93,22,30,16,25,0,38,8.2,23.7,4,red,red,yellow,25,49.48,0.11
-IJmuiden,Benelux coast,144,14,82,41,7,0,55,4.9,9.7,5,red,red,red,20,52.46,4.58
-Terneuzen,Benelux coast,132,10,70,30,22,0,40,6.3,7.6,6,red,red,red,12,51.33,3.83
-Vlissingen,Benelux coast,125,10,62,41,12,0,51,8.0,8.0,6,red,red,red,15,51.44,3.58
-Bremerhaven,German Bight & Ems,104,9,65,21,9,0,30,6.5,8.7,8,yellow,yellow,red,25,53.55,8.55
-Emden,German Bight & Ems,57,8,26,15,8,0,23,7.3,14.0,9,yellow,yellow,yellow,15,53.34,7.2
-Wilhelmshaven,German Bight & Ems,66,7,45,14,0,0,21,,10.6,10,yellow,yellow,yellow,20,53.52,8.14
-Eemshaven,German Bight & Ems,103,6,60,31,6,0,37,5.5,5.8,11,yellow,yellow,yellow,15,53.45,6.84
-Zeebrugge,Benelux coast,57,6,34,8,9,0,14,9.8,10.5,11,yellow,yellow,yellow,20,51.34,3.2
-Felixstowe,UK east coast & Thames,34,6,21,2,5,0,8,7.1,17.6,11,yellow,green,green,20,51.95,1.3
-Southampton,Dover Strait & Channel,57,5,31,12,9,0,17,11.8,8.8,14,green,yellow,yellow,20,50.9,-1.4
-Thames (London Gateway),UK east coast & Thames,49,3,30,8,8,0,11,8.2,6.1,15,green,green,green,25,51.5,0.5
-Immingham (Humber),UK east coast & Thames,23,1,16,3,3,0,4,8.2,4.3,16,green,green,green,25,53.63,-0.19
-Dover,Dover Strait & Channel,5,0,0,1,4,0,1,14.6,0.0,17,green,green,green,12,51.12,1.33
-Calais,Dover Strait & Channel,3,0,0,0,3,0,0,4.6,0.0,17,green,green,green,12,50.97,1.85
-Dunkirk,Dover Strait & Channel,0,0,0,0,0,0,0,,,17,green,green,green,20,51.05,2.35
+Rotterdam,Benelux coast,1036,75,603,258,100,0,333,7.7,7.2,1,red,red,red,30,51.95,4.1
+Amsterdam,Benelux coast,725,67,252,298,108,0,365,4.0,9.2,2,red,red,red,15,52.4,4.82
+Antwerp,Benelux coast,382,34,197,85,66,0,119,6.2,8.9,3,red,red,red,25,51.27,4.33
+Le Havre,Dover Strait & Channel,64,19,26,13,6,0,32,8.6,29.7,4,red,yellow,yellow,25,49.48,0.11
+IJmuiden,Benelux coast,142,15,76,38,13,0,53,4.2,10.6,5,red,red,red,20,52.46,4.58
+Vlissingen,Benelux coast,133,10,62,48,13,0,58,10.7,7.5,6,red,red,red,15,51.44,3.58
+Bremerhaven,German Bight & Ems,95,9,55,25,6,0,34,7.0,9.5,7,red,red,yellow,25,53.55,8.55
+Terneuzen,Benelux coast,111,8,57,23,23,0,31,8.2,7.2,8,yellow,yellow,red,12,51.33,3.83
+Emden,German Bight & Ems,53,8,24,16,5,0,24,7.2,15.1,8,yellow,yellow,yellow,15,53.34,7.2
+Wilhelmshaven,German Bight & Ems,64,7,42,12,3,0,19,0.7,10.9,10,yellow,yellow,yellow,20,53.52,8.14
+Zeebrugge,Benelux coast,61,7,30,13,11,0,20,10.3,11.5,10,yellow,yellow,yellow,20,51.34,3.2
+Eemshaven,German Bight & Ems,103,5,59,33,6,0,38,13.4,4.9,12,yellow,red,red,15,53.45,6.84
+Felixstowe,UK east coast & Thames,35,5,17,3,10,0,8,5.8,14.3,12,yellow,green,green,20,51.95,1.3
+Southampton,Dover Strait & Channel,52,4,31,9,8,0,13,11.9,7.7,14,green,yellow,yellow,20,50.9,-1.4
+Thames (London Gateway),UK east coast & Thames,46,1,29,6,10,0,7,8.0,2.2,15,green,green,green,25,51.5,0.5
+Immingham (Humber),UK east coast & Thames,12,0,10,1,1,0,1,17.4,0.0,16,green,green,green,25,53.63,-0.19
+Dover,Dover Strait & Channel,4,0,0,0,4,0,0,6.9,0.0,16,green,green,green,12,51.12,1.33
+Calais,Dover Strait & Channel,1,0,0,0,1,0,0,17.4,0.0,16,green,green,green,12,50.97,1.85
+Dunkirk,Dover Strait & Channel,0,0,0,0,0,0,0,,,16,green,green,green,20,51.05,2.35

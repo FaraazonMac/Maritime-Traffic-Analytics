@@ -6,13 +6,21 @@ Maritime Traffic Analytics tracks live ship traffic from AIS data (currently the
 
 Most public ship trackers show you *where* ships are. This project treats the live AIS feed as raw data to derive real insight from: which ships have gone quiet, how congested a port is right now, and what's actually happening around any given vessel, answered by an AI agent that queries live data instead of guessing.
 
-<!-- Add screenshots after your final run, e.g.: ![Dashboard](docs/dashboard.png) and ![Globe](docs/globe.png) -->
+![Live ship traffic in the North Sea and English Channel](docs/globe-overview.png)
+
+<p>
+  <img src="docs/globe-ship-panel.png" width="49%" alt="Ship panel with voyage, weather and congestion">
+  <img src="docs/chat.png" width="49%" alt="AI fleet assistant highlighting Dutch-flagged anchored tankers">
+</p>
+
+*Top: live ship traffic. Bottom left: selecting a ship shows its voyage, weather, congestion and nearest facilities. Bottom right: the assistant answers from live data and highlights the result on the globe.*
 
 ---
 
 ## Table of Contents
 
 - [Problem, solution and approach](#problem-solution-and-approach)
+- [What you can do on the globe](#what-you-can-do-on-the-globe)
 - [Key Features](#key-features)
 - [Also Built In](#also-built-in)
 - [Analytics layer](#analytics-layer)
@@ -41,6 +49,59 @@ Most public ship trackers show you *where* ships are. This project treats the li
 4. **Verify.** Headline numbers are computed twice, in pandas and in SQL, and cross-checked. Silent-ship rates are compared on equal-age windows, which removed a bias found during the analysis.
 5. **Answer.** The AI assistant uses function calling over live data, so replies come from the data and not from the model's memory.
 6. **Track over time.** A history collector stores per-hub summaries every 30 minutes, and time views (daily levels, weekday patterns) appear as data accumulates.
+
+---
+
+## What you can do on the globe
+
+### Map layers (left panel)
+
+Eight toggles in the **Map Layers** panel switch infrastructure on and off, so you see only what you need. Click any marker for its details.
+
+| Layer | What appears |
+|---|---|
+| Ports / Harbours | About 3,630 ports from the NGA World Port Index |
+| Lighthouses | Curated real lighthouses worldwide |
+| Shipyards | Curated major shipyards |
+| Ship Recycling Yards | Major ship-breaking yards |
+| Bunkering Stations | Major ship-fuelling hubs |
+| Dry Docks and Wet Docks | Major dock facilities |
+| Port Congestion (Live) | Ports in the tracked region coloured green, amber or red from live ship density; the marker panel shows anchored and docked counts |
+
+### Ships
+
+- **Colour shows status:** moving, anchored at sea, moored in port, or silent for 20+ minutes (red). Moving ships are arrows pointing along their heading; the rest are dots.
+- **Click a ship** for its panel:
+  - identity: type, flag, IMO, call sign
+  - voyage: destination, ETA, and the port it departed from, when detected
+  - status, speed, heading and how long ago it last reported
+  - a **silent-ship alert** if it has stopped reporting
+  - **live weather** at its position: sky, wind and gusts, pressure, visibility, wave height and period, swell, sea temperature, current
+  - the **nearest** port, lighthouse, shipyard, recycling yard, bunkering station, dry dock and wet dock, each with distance and compass direction
+  - the **congestion level** of the nearest port, and **Check another port →**, which cycles through farther ports, each numbered on the globe
+- Selecting a ship dims the others so it stands out.
+
+### AI fleet assistant
+
+Click the chat button (bottom right) and ask in plain English. It answers from the live fleet data, not from the model's memory, and it remembers the conversation, so follow-ups like "show them on the map" work.
+
+| You can ask about | Examples |
+|---|---|
+| Counts and filters | "Show me Dutch-flagged tankers anchored at sea." "How many Panama-flagged tankers are there?" |
+| Ports and activity | "Which is busier, Rotterdam or Antwerp?" "Moving cargo ships near Antwerp with a destination set." |
+| Voyages | "Which ships departed from Antwerp?" "Which ships are heading to Rotterdam?" |
+| Silent ships | "Any ships silent for more than 30 minutes near Rotterdam?" |
+| Lookups | "Point me to VOE VANGUARD." "Find the ship with IMO 9708382." "Where is Portland Head Light?" "Show me all Damen shipyards." |
+| Distances | "How far is Hamburg from Rotterdam, and in which direction?" |
+
+It says so when it can't answer, for example for ships outside the tracked region or departures before the server started, and it doesn't invent details. Its counts use the navigation status ships report, so a figure like "moving" can differ from the analytics layer, which also uses speed.
+
+### Point and fly
+
+Ask for a specific ship or facility, by name, IMO number, flag, vessel type, destination, departure port or any combination, and the globe responds:
+- **One match:** the camera flies there and opens its panel.
+- **Several matches:** the camera frames them all; facilities get numbered markers and matching ships stay bright while the rest dim. Results above 500 ships are counted but not highlighted.
+- **Clear** in the chat header resets the view.
 
 ---
 
@@ -80,7 +141,7 @@ A reproducible analysis pipeline sits on top of the live feed (`analysis/`). One
 
 ## Scope: Why Not Every Ship Worldwide?
 
-A deliberate engineering decision, not an oversight.
+Live ship tracking covers the North Sea and English Channel by design. Rendering every ship on Earth in the browser is not affordable for a free-tier, client-rendered app, and the free AIS data would not be complete anyway. The region is one of the world's busiest and best-covered shipping areas, which keeps the globe smooth and the backend within free-tier limits. The three reasons:
 
 1. **AIS coverage isn't actually global.** Free feeds like [AISStream.io](https://aisstream.io) rely on a community network of land-based receivers, strong near coastlines, and dropping off sharply in open ocean. Closing that gap needs *satellite* AIS, a paid commercial product (Kpler, Spire, etc.). "All ships worldwide" on a free tier would mean busy coastlines and empty oceans, a worse product than one honestly scoped.
 2. **Rendering cost.** Every ship is a live 3D object, rebuilt on every 10-second poll. The current North Sea/English Channel region alone regularly holds 1,000-3,000+ live ships. Global scale would need a different rendering strategy (GPU instancing, clustering) to stay smooth in a browser.

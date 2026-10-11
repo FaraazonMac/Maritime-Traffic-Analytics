@@ -1,18 +1,17 @@
 vessel_type,location,moving_ships,avg_speed_kn
-cargo,near a hub,78,7.4
-cargo,open water,296,8.5
-fishing,near a hub,10,7.2
-fishing,open water,14,3.6
-official,near a hub,10,10.4
-official,open water,12,6.0
-other,near a hub,59,7.5
-other,open water,145,7.7
-passenger,near a hub,64,5.6
-passenger,open water,71,5.8
-pleasure,open water,10,5.2
-tanker,near a hub,84,6.9
-tanker,open water,175,8.3
-tug,near a hub,26,5.8
-tug,open water,10,6.3
-unknown,near a hub,15,6.9
-unknown,open water,65,7.4
+cargo,near a hub,89,7.8
+cargo,open water,295,8.1
+fishing,open water,51,3.5
+official,near a hub,12,9.5
+official,open water,12,5.9
+other,near a hub,63,8.0
+other,open water,157,7.1
+passenger,near a hub,103,4.5
+passenger,open water,96,5.3
+pleasure,open water,12,4.8
+tanker,near a hub,77,7.3
+tanker,open water,166,8.6
+tug,near a hub,30,5.3
+tug,open water,9,3.8
+unknown,near a hub,16,6.0
+unknown,open water,73,6.6
