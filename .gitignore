@@ -5,3 +5,5 @@ backend/departures.json
 
 backend/ais_history.db
 backend/main.py.bak
+
+.DS_Store
