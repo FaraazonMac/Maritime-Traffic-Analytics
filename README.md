@@ -36,7 +36,7 @@ Most public ship trackers show you *where* ships are. This project treats the li
 
 ## Problem, solution and approach
 
-**The problem.** Raw ship-tracking (AIS) data looks authoritative but misleads. It is a firehose of position messages with free-text destinations typed by hand, navigation status that crews forget to update (about 30% of ships marked "under way" are actually stationary), missing identifiers (only about 25% of ships carry a valid IMO number), and a mix of cargo ships, tugs, ferries, pleasure craft and inland barges. Raw counts therefore overstate movement, blur seagoing and local traffic, and make ships that simply went quiet look suspicious. Operators and analysts need trustworthy answers to simple questions: where are ships waiting, what does that waiting cost, and which signals are real?
+**The problem.** Raw ship-tracking (AIS) data looks authoritative but misleads. It is a firehose of position messages with free-text destinations typed by hand, navigation status that crews forget to update (about two thirds of ships marked "under way" are actually stationary), missing identifiers (only about 25% of ships carry a valid IMO number), and a mix of cargo ships, tugs, ferries, pleasure craft and inland barges. Raw counts therefore overstate movement, blur seagoing and local traffic, and make ships that simply went quiet look suspicious. Operators and analysts need trustworthy answers to simple questions: where are ships waiting, what does that waiting cost, and which signals are real?
 
 **The solution.** A live maritime intelligence tool for the North Sea and English Channel with two layers:
 - **An application:** a 3D globe with ports and maritime infrastructure worldwide, per-ship voyage and weather context, silent-ship ("dark fleet") alerts, port congestion, and an AI assistant that answers questions from the live fleet data.
@@ -129,7 +129,7 @@ A reproducible analysis pipeline sits on top of the live feed (`analysis/`). One
 
 **What it found** (North Sea & English Channel, snapshot of 11 Oct 2026, about 6,900 current ships):
 
-- **Data quality.** Only about 25% of ships carry a valid IMO number. Destinations are free text typed by hand, and cleaning raised the share resolved to a port from about 28% to about 35%. About 30% of ships whose status says "under way" are actually stationary, so ships are classified by speed as well as status.
+- **Data quality.** Only about 25% of ships carry a valid IMO number. Destinations are free text typed by hand, and cleaning raised the share resolved to a port from about 28% to about 35%. About two thirds of ships whose status says "under way" are actually stationary, so ships are classified by speed as well as status.
 - **What the feed contains.** Only about 16% of current ships are under way and about 44% are moored, and about 69% are under 100 m. It is a harbour-dominated feed (tugs, ferries, pleasure craft, inland barges and cargo ships), not open-sea shipping.
 - **Congestion.** Rotterdam and Amsterdam have the most ships waiting at anchor (about 70 each), followed by Antwerp (about 30). This is one snapshot; trends need the history collector.
 - **Silent ships.** About 8% of ships heard in the last hour had been silent for 20+ minutes. About 86% of them were stationary when last heard, and the rate was similar at the edge of the tracked area and in the interior (about 7-8% in both). A first calculation suggested a large edge effect, but it was an artefact of how long silent ships are retained, and it disappeared when ships of the same age were compared.
@@ -155,7 +155,6 @@ A reproducible analysis pipeline sits on top of the live feed (`analysis/`). One
 
 
 
-1
 ## Scope: Why Not Every Ship Worldwide?
 
 Live ship tracking covers the North Sea and English Channel by design. Rendering every ship on Earth in the browser is not affordable for a free-tier, client-rendered app, and the free AIS data would not be complete anyway. The region is one of the world's busiest and best-covered shipping areas, which keeps the globe smooth and the backend within free-tier limits. The three reasons:
@@ -267,7 +266,7 @@ Results are written to `analysis/outputs/` (dashboard, workbook, findings memo).
 - No operator or build-year data: this doesn't exist in AIS broadcasts. The only real source (Equasis) requires a login with no public API, and this project doesn't build scrapers for authenticated third-party services.
 - Some smaller vessels (fishing boats, pleasure craft, Class B AIS transponders) never broadcast an IMO number, a real limitation of the ship's equipment, not a bug.
 - Live ship tracking is scoped to the North Sea/English Channel (see [Scope](#scope-why-not-every-ship-worldwide) above).
-- Navigation status is typed by the crew and often stale (about 30% of ships marked "under way" were stationary), so the analytics layer classifies ships by speed as well.
+- Navigation status is typed by the crew and often stale (about two thirds of ships marked "under way" were stationary), so the analytics layer classifies ships by speed as well.
 - Fuel, CO2 and cost figures are estimates from published ranges, not measurements; AIS has no operator or cargo data.
 - Departure ports are only recorded for departures observed while the server is running. Ships that left port before that are unknown, and "departed yesterday"-style questions can't be answered.
 - Ships are dropped from the live list after 60 minutes of silence if they were last seen near the edge of the tracked area, and after 24 hours if they went silent well inside it. A ship that really switched off its transponder near the edge cannot be told apart from one that sailed out of coverage.
