@@ -140,8 +140,7 @@ A reproducible analysis pipeline sits on top of the live feed (`analysis/`). One
 **Limits.** One region only; AIS coverage comes from land-based receivers, so open-sea traffic is under-represented; fuel, CO2 and cost are estimates with explicit assumptions and sources; AIS has no operator or cargo data, so no company-level loss can be computed.
 
 
-<details>
-<summary><b>Dashboard screenshots</b> (click to expand)</summary>
+### Dashboard screenshots
 
 ![Overview: KPIs and ship map](docs/dashboard-01-overview-top.png)
 ![Overview: status and hub levels](docs/dashboard-02-overview-bottom.png)
@@ -154,11 +153,9 @@ A reproducible analysis pipeline sits on top of the live feed (`analysis/`). One
 ![Data quality and cleaning log](docs/dashboard-09-data-quality.png)
 ![Time analysis: fills in as the collector gathers days](docs/dashboard-10-time-analysis.png)
 
-</details>
 
 
-
-
+1
 ## Scope: Why Not Every Ship Worldwide?
 
 Live ship tracking covers the North Sea and English Channel by design. Rendering every ship on Earth in the browser is not affordable for a free-tier, client-rendered app, and the free AIS data would not be complete anyway. The region is one of the world's busiest and best-covered shipping areas, which keeps the globe smooth and the backend within free-tier limits. The three reasons:
